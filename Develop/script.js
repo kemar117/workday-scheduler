@@ -10,6 +10,14 @@ let workDay = {
     "5 PM": "",
 };
 
+$(document).ready(function(){
+    if(!localStorage.getItem('workDay')) {
+      updateCalendarTasks(workDay);
+    } else {
+      updateCalendarTasks(JSON.parse(localStorage.getItem('workDay')));
+    }
+})
+
 $('#date-today h6').text(moment().format('dddd') + ", " + moment().format('MMMM Do YYYY, h:mm:ss a'));
 
 let counter = 1;
@@ -30,6 +38,13 @@ for(const property in workDay) {
   counter ++;
 }
 
+$("button").click(function() {
+    value = $(this).siblings("textarea").val();
+    hourString = $(this).siblings("div").text();
+    
+    saveSchedule(hourString, value);
+});
+
 function hourNumberFromHourString(hourString) {
     switch(hourString) {
       case "9 AM": return 9;
@@ -44,9 +59,18 @@ function hourNumberFromHourString(hourString) {
     }
 }
 
+function loadCorrectDataset() {
+    result = localStorage.getItem('workDay')
+    return (result ? result : workDay);
+}
+
 function initializeLocalStorage() {
     localStorage.setItem('workDay', JSON.stringify(workDay));
 };
+
+function saveToLocalStorage(dayObj) {
+    localStorage.setItem('workDay', JSON.stringify(dayObj));
+}
 
 function saveSchedule(hourString, val) {
     if(!localStorage.getItem('workDay')) {
@@ -58,3 +82,10 @@ function saveSchedule(hourString, val) {
   
     saveToLocalStorage(workHours);
 }
+
+function updateCalendarTasks(dayObject) {
+    $(".calendar-row").each(function(index) {
+      let res = $(this).children("div");
+      $(this).children("textarea").text(dayObject[res.text()]);
+    })
+} 
