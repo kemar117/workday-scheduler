@@ -1,25 +1,33 @@
 textarea {
+  background: transparent;
+  border: none;
   resize: none;
+  color: #000000;
+  border-left: 1px solid black;
+  padding: 10px;
 }
 
 .past-hour {
-  background-color: rgb(189, 189, 189);
-  border-color: gray;
+  background-color: #d3d3d3;
+  color: white;
 }
 
 .present-hour {
-  background-color: crimson;
-  border-color: crimson;
+  background-color: #ff6961;
+  color: white;
 }
 
 .future-hour {
-  background-color: rgb(90, 177, 90);
-  border-color: rgb(41, 136, 41);
+  background-color: #77dd77;
+  color: white;
 }
 
 button {
-  background-color: darkturquoise;
-  border-radius: 0px 5px 5px 0px;
+  border-left: 1px solid black;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+  background-color: #06AED5;
+  color: white;
 }
 
 header {
@@ -29,4 +37,11 @@ header {
 
 button {
   font-size: 2em;
+}
+
+.container {
+  text-align: center;
+  background-color: transparent;
+  color: black;
+  border-radius: 0;
 }
