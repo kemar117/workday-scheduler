@@ -12,7 +12,6 @@
 *jQuery
 
 # Website
-https://kemar117.github.io/workday-scheduler/
 
 # Contribution
 Upgraded by Kemar Gray
